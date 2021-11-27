@@ -66,9 +66,10 @@ export class LearningsListComponent implements OnInit {
     instance.confirmTxt = 'Delete';
     instance.isDanger = true;
     instance.onConfirm = () =>
-      this._learningsService
-        .delete(learning.id)
-        .pipe(mergeMap(() => this._learningsService.get()));
+      this._learningsService.delete(learning.id).pipe(
+        first(),
+        mergeMap(() => this._learningsService.get())
+      );
   }
 
   onAssignClick(learning: LearningEntry) {

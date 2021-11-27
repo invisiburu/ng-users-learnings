@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
-import { first, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-confirm',
@@ -20,10 +20,7 @@ export class ConfirmModal {
 
   onConfirmClick() {
     this.onConfirm()
-      .pipe(
-        first(),
-        tap(() => this._activeModal.dismiss())
-      )
+      .pipe(tap(() => this._activeModal.dismiss()))
       .subscribe();
   }
 

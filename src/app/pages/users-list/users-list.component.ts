@@ -56,14 +56,15 @@ export class UsersListComponent implements OnInit {
     instance.confirmTxt = 'Delete';
     instance.isDanger = true;
     instance.onConfirm = () =>
-      this._usersService
-        .delete(user.id)
-        .pipe(mergeMap(() => this._usersService.get()));
+      this._usersService.delete(user.id).pipe(
+        first(),
+        mergeMap(() => this._usersService.get())
+      );
   }
 
   onLearningsClick(user: UserEntry) {
     const modal = this._modalService.open(UserLearningsModal);
     const instance = modal.componentInstance as UserLearningsModal;
-    instance.user = user
+    instance.user = user;
   }
 }
