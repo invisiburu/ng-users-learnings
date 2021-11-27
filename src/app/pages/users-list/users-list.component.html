@@ -1,1 +1,32 @@
-<p>users-list works!</p>
+<div class="users-list__items">
+  <div class="users-list__item" *ngFor="let user of users$ | async">
+    <div class="users-list__item-cell">
+      <app-avatar class="users-list__item-ava" [source]="user"></app-avatar>
+      <span class="users-list__item-cell-txt">
+        {{ user.name }}
+      </span>
+    </div>
+    <div class="users-list__item-cell">
+      <span class="users-list__item-cell-txt">
+        {{ user.email }}
+      </span>
+    </div>
+    <div class="users-list__item-actions">
+      <button
+        class="users-list__item-action"
+        type="button"
+        (click)="onDeleteClick(user)"
+      >
+        Delete
+      </button>
+      <button
+        class="users-list__item-action"
+        *ngIf="user.learnings.length > 0"
+        type="button"
+        (click)="onLearningsClick(user)"
+      >
+        Learnings
+      </button>
+    </div>
+  </div>
+</div>

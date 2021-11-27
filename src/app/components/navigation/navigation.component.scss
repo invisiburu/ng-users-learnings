@@ -1,4 +1,11 @@
+:host {
+  display: block;
+}
+
 .nav {
+  display: block;
+  text-align: center;
+
   &__btn {
     color: inherit;
 

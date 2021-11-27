@@ -1,0 +1,31 @@
+.users-list {
+  &__items {
+    display: grid;
+    grid: auto-flow auto / 1fr;
+    gap: 1rem 0;
+  }
+
+  &__item {
+    display: grid;
+    grid: auto / auto-flow 1fr;
+    gap: 0 1rem;
+    align-items: center;
+  }
+
+  &__item-cell,
+  &__item-actions {
+    display: grid;
+    grid: auto / auto-flow auto;
+    justify-content: start;
+    align-items: center;
+    gap: 0 0.5rem;
+  }
+
+  &__item-actions {
+    grid: auto / auto-flow 0.5fr;
+  }
+
+  &__item-action {
+    min-width: 0;
+  }
+}
