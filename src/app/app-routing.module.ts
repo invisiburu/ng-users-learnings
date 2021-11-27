@@ -6,10 +6,11 @@ import { LearningsListComponent } from '@/pages/learnings-list/learnings-list.co
 const routes: Routes = [
   { path: 'users', component: UsersListComponent },
   { path: 'learnings', component: LearningsListComponent },
+  { path: '', redirectTo: '/users', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
