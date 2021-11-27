@@ -18,6 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateUserModal } from '@/modals/create-user/create-user.modal';
 import { ConfirmModal } from '@/modals/confirm/confirm.modal';
 import { UserLearningsModal } from '@/modals/user-learnings/user-learnings.modal';
+import { CreateLearningModal } from '@/modals/create-learning/create-learning.modal';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { UserLearningsModal } from '@/modals/user-learnings/user-learnings.modal
     CreateUserModal,
     ConfirmModal,
     UserLearningsModal,
+    CreateLearningModal,
   ],
   imports: [
     BrowserModule,

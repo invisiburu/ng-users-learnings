@@ -5,7 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LearningsQuery } from '@/services/learning/learnings.query';
 import { LearningsService } from '@/services/learning/learnings.service';
 import { LearningEntry } from '@/services/learning/learnings.types';
-import { CreateUserModal } from '@/modals/create-user/create-user.modal';
+import { CreateLearningModal } from '@/modals/create-learning/create-learning.modal';
 import { ConfirmModal } from '@/modals/confirm/confirm.modal';
 
 @Component({
@@ -44,8 +44,7 @@ export class LearningsListComponent implements OnInit {
   }
 
   onCreateClick() {
-    alert('TODO: create')
-    // this._modalService.open(CreateUserModal);
+    this._modalService.open(CreateLearningModal);
   }
 
   onSwitchActiveClick(learning: LearningEntry) {
@@ -73,7 +72,7 @@ export class LearningsListComponent implements OnInit {
   }
 
   onAssignClick(learning: LearningEntry) {
-    alert('TODO: assign')
+    alert('TODO: assign');
     // const modal = this._modalService.open(UserLearningsModal);
     // const instance = modal.componentInstance as UserLearningsModal;
     // instance.user = user;

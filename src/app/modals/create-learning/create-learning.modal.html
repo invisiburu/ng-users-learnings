@@ -1,0 +1,25 @@
+<h3>Create learning</h3>
+
+<form [formGroup]="form" (submit)="onSubmit()">
+  <label class="form-group">
+    <p class="col-form-label">Name:</p>
+    <input class="form-control" type="text" formControlName="name" />
+    <ng-container *ngIf="form.get('name').touched">
+      <p *ngIf="form.get('name').errors?.required" class="text-danger">
+        Name is required.
+      </p>
+    </ng-container>
+  </label>
+
+  <label class="form-check">
+    <input class="form-check-input" type="checkbox" formControlName="active" />
+    <p class="form-check-label">Active</p>
+  </label>
+
+  <label class="form-group mt-4">
+    <button class="btn btn-primary" type="submit">Save</button>
+    <button class="btn btn-outline ml-2" type="button" (click)="onCloseClick()">
+      Cancel
+    </button>
+  </label>
+</form>
