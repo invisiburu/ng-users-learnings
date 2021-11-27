@@ -15,6 +15,17 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@/*": [
+        "src/app/*"
+      ],
+      "@assets/*": [
+        "assets/*"
+      ],
+    }
+  },
+  "angularCompilerOptions": {
+    "strictTemplates": true,
   }
 }
