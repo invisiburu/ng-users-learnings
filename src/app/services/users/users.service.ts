@@ -33,4 +33,8 @@ export class UsersService {
   create(user: Omit<UserEntry, 'id'>) {
     return this._http.post<UserEntry>('/users', user);
   }
+
+  delete(userId: number) {
+    return this._http.delete(`/users/${userId}`);
+  }
 }

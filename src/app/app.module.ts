@@ -16,6 +16,7 @@ import { PageHeadComponent } from '@/components/page-head/page-head.component';
 import { ApiInterceptor } from '@/interceptors/api.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateUserModal } from '@/modals/create-user/create-user.modal';
+import { ConfirmModal } from './modals/confirm/confirm.modal';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { CreateUserModal } from '@/modals/create-user/create-user.modal';
     AvatarComponent,
     PageHeadComponent,
     CreateUserModal,
+    ConfirmModal,
   ],
   imports: [
     BrowserModule,

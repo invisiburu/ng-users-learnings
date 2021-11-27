@@ -1,11 +1,12 @@
 import { Observable } from 'rxjs';
-import { first } from 'rxjs/operators';
+import { first, mergeMap } from 'rxjs/operators';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UsersQuery } from '@/services/users/users.query';
 import { UsersService } from '@/services/users/users.service';
 import { UserEntry } from '@/services/users/users.types';
 import { CreateUserModal } from '@/modals/create-user/create-user.modal';
+import { ConfirmModal } from '@/modals/confirm/confirm.modal';
 
 @Component({
   selector: 'app-users-list',
@@ -43,7 +44,16 @@ export class UsersListComponent implements OnInit {
   }
 
   onDeleteClick(user: UserEntry) {
-    alert(`TODO: DELETE!!! ${user.name}`);
+    const modal = this._modalService.open(ConfirmModal);
+    const instance = modal.componentInstance as ConfirmModal;
+    instance.title = 'Confirm deletion';
+    instance.message = `Are you sure you want to delete ${user.name}? This action cannot be undone.`;
+    instance.confirmTxt = 'Delete';
+    instance.isDanger = true;
+    instance.onConfirm = () =>
+      this._usersService
+        .delete(user.id)
+        .pipe(mergeMap(() => this._usersService.get()));
   }
 
   onLearningsClick(user: UserEntry) {

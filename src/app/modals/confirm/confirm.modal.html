@@ -1,0 +1,19 @@
+<h3>{{ title || 'Confirm action' }}</h3>
+<p>{{ message || 'Are you sure you want to perform this action?' }}</p>
+
+<button
+  class="btn"
+  [ngClass]="isDanger ? 'btn-danger' : 'btn-primary'"
+  type="button"
+  (click)="onConfirmClick()"
+>
+  {{ confirmTxt || 'Confirm' }}
+</button>
+
+<button
+  class="btn btn-outline ml-2"
+  type="button"
+  (click)="onCloseClick()"
+>
+  {{ cancelTxt || 'Cancel' }}
+</button>
