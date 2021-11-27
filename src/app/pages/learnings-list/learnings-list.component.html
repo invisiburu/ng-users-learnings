@@ -6,7 +6,7 @@
 <div class="learnings-list__items">
   <div class="learnings-list__item">
     <div class="learnings-list__item-head-cell">Name</div>
-    <div class="learnings-list__item-head-cell">Active</div>
+    <div class="learnings-list__item-head-cell">Archived</div>
     <div class="learnings-list__item-head-cell">Actions</div>
   </div>
   <div
@@ -20,7 +20,7 @@
     </div>
     <div class="learnings-list__item-cell">
       <span class="learnings-list__item-cell-txt">
-        {{ learning.is_active }}
+        {{ !learning.is_active }}
       </span>
     </div>
     <div class="learnings-list__item-actions">
