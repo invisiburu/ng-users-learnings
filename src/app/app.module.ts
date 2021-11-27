@@ -10,6 +10,7 @@ import { UsersListComponent } from '@/pages/users-list/users-list.component';
 import { LearningsListComponent } from '@/pages/learnings-list/learnings-list.component';
 import { NavigationComponent } from '@/components/navigation/navigation.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
+import { PageHeadComponent } from './components/page-head/page-head.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AvatarComponent } from './components/avatar/avatar.component';
     LearningsListComponent,
     NavigationComponent,
     AvatarComponent,
+    PageHeadComponent,
   ],
   imports: [
     BrowserModule,

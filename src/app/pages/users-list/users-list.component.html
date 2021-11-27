@@ -1,3 +1,9 @@
+<app-page-head class="users-list__page-head">
+  <ng-container heading>Users</ng-container>
+  <button action type="button" (click)="onCreateClick()">Create</button>
+  <button action type="button" (click)="onCreateClick()">Create</button>
+</app-page-head>
+
 <div class="users-list__items">
   <div class="users-list__item" *ngFor="let user of users$ | async">
     <div class="users-list__item-cell">

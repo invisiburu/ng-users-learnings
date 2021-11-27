@@ -31,6 +31,10 @@ export class UsersListComponent implements OnInit {
       });
   }
 
+  onCreateClick() {
+    alert('TODO: CREATEA!!!');
+  }
+
   onDeleteClick(user: UserEntry) {
     alert(`TODO: DELETE!!! ${user.name}`);
   }

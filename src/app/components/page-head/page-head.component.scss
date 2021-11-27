@@ -1,0 +1,13 @@
+:host {
+  display: grid;
+  grid: auto / auto-flow auto;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.page-head__actions {
+  display: grid;
+  grid: auto / auto-flow auto;
+  gap: 0 1rem;
+  justify-content: end;
+}
