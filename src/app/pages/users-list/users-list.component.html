@@ -4,7 +4,15 @@
 </app-page-head>
 
 <div class="users-list__items">
-  <div class="users-list__item" *ngFor="let user of users$ | async; trackBy: userTrackBy">
+  <div class="users-list__item">
+    <div class="users-list__item-head-cell">Identity</div>
+    <div class="users-list__item-head-cell">Email</div>
+    <div class="users-list__item-head-cell">Actions</div>
+  </div>
+  <div
+    class="users-list__item mt-4"
+    *ngFor="let user of users$ | async; trackBy: userTrackBy"
+  >
     <div class="users-list__item-cell">
       <app-avatar class="users-list__item-ava" [source]="user"></app-avatar>
       <span class="users-list__item-cell-txt">
@@ -35,7 +43,7 @@
     </div>
   </div>
   <ngb-pagination
-    class="d-flex justify-content-center"
+    class="d-flex justify-content-center mt-4"
     [page]="usersPage$ | async"
     (pageChange)="getPage($event)"
     [pageSize]="usersPerPage$ | async"

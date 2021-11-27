@@ -1,15 +1,14 @@
 .users-list {
-  &__items {
-    display: grid;
-    grid: auto-flow auto / 1fr;
-    gap: 1rem 0;
-  }
-
   &__item {
     display: grid;
     grid: auto / auto-flow 1fr;
     gap: 0 1rem;
     align-items: center;
+  }
+
+  &__item-head-cell {
+    font-size: 0.875rem;
+    font-weight: bold;
   }
 
   &__item-cell,
