@@ -13,6 +13,7 @@ import { NavigationComponent } from '@/components/navigation/navigation.componen
 import { AvatarComponent } from '@/components/avatar/avatar.component';
 import { PageHeadComponent } from '@/components/page-head/page-head.component';
 import { ApiInterceptor } from '@/interceptors/api.interceptor';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ApiInterceptor } from '@/interceptors/api.interceptor';
     AppRoutingModule,
     HttpClientModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
+    NgbModule,
   ],
   providers: [
     {

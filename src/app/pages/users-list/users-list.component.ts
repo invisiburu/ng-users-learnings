@@ -13,22 +13,26 @@ import { first } from 'rxjs/operators';
 })
 export class UsersListComponent implements OnInit {
   users$: Observable<UserEntry[]>;
+  usersPage$: Observable<number>;
+  usersPerPage$: Observable<number>;
+  usersTotal$: Observable<number>;
 
   constructor(
     private _usersService: UsersService,
     private _usersQuery: UsersQuery
   ) {
     this.users$ = this._usersQuery.users$;
+    this.usersPage$ = this._usersQuery.usersPage$;
+    this.usersPerPage$ = this._usersQuery.usersPerPage$;
+    this.usersTotal$ = this._usersQuery.usersTotal$;
   }
 
   ngOnInit(): void {
-    this._usersService
-      .get()
-      .pipe(first())
-      .subscribe((n) => {
-        console.log(n);
-        console.log(this._usersQuery.users$);
-      });
+    this.getPage();
+  }
+
+  getPage(page = 1) {
+    return this._usersService.get({ page }).pipe(first()).subscribe();
   }
 
   onCreateClick() {

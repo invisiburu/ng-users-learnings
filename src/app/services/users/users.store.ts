@@ -4,11 +4,17 @@ import { UserEntry } from './users.types';
 
 export interface UsersState {
   users: null | UserEntry[];
+  page: number;
+  perPage: number;
+  total: number;
 }
 
 export function createInitialState(): UsersState {
   return {
     users: null,
+    page: 0,
+    perPage: 0,
+    total: 0,
   };
 }
 
@@ -17,9 +23,5 @@ export function createInitialState(): UsersState {
 export class UsersStore extends Store<UsersState> {
   constructor() {
     super(createInitialState());
-  }
-
-  updateUsers(users: null | UserEntry[]) {
-    this.update({ users });
   }
 }

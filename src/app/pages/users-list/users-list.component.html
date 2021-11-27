@@ -35,4 +35,11 @@
       </button>
     </div>
   </div>
+  <ngb-pagination
+    class="d-flex justify-content-center"
+    [page]="usersPage$ | async"
+    (pageChange)="getPage($event)"
+    [pageSize]="usersPerPage$ | async"
+    [collectionSize]="usersTotal$ | async"
+  ></ngb-pagination>
 </div>

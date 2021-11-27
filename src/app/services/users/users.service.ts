@@ -10,11 +10,23 @@ import { UserEntry } from './users.types';
 export class UsersService {
   constructor(private _http: HttpClient, private _usersStore: UsersStore) {}
 
-  get(opts?: { page?: string }) {
-    return this._http.get<UserEntry[]>('/users', { params: opts }).pipe(
-      tap((users) => {
-        this._usersStore.updateUsers(users);
+  get(opts?: { page?: number; limit?: number }) {
+    const page = opts?.page || 1;
+    const limit = opts?.limit || 10;
+    return this._http
+      .get<UserEntry[]>('/users', {
+        params: {
+          _page: String(page),
+          _limit: String(limit),
+        },
+        observe: 'response',
       })
-    );
+      .pipe(
+        tap((response) => {
+          const users = response.body;
+          const total = Number(response.headers.get('X-Total-Count'));
+          this._usersStore.update({ users, page, perPage: limit, total });
+        })
+      );
   }
 }
