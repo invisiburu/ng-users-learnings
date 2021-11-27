@@ -1,0 +1,9 @@
+<img
+  *ngIf="image; else elseBlock"
+  class="avatar__img"
+  [src]="image"
+  [alt]="owner"
+/>
+<ng-template #elseBlock>
+  <span class="avatar__placeholder">{{ abbreviation }}</span>
+</ng-template>
