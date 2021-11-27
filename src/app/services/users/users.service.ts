@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { UsersStore } from '@/services/users/users.store';
-import { from, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 import { UserEntry } from './users.types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  constructor(private _usersStore: UsersStore) {}
+  constructor(private _http: HttpClient, private _usersStore: UsersStore) {}
 
-  getAll(): Observable<UserEntry[]> {
-    return from(import('@assets/mocks/Users.json')).pipe(
-      tap((m) => {
-        this._usersStore.updateUsers((m as any).default);
+  get(opts?: { page?: string }) {
+    return this._http.get<UserEntry[]>('/users', { params: opts }).pipe(
+      tap((users) => {
+        this._usersStore.updateUsers(users);
       })
     );
   }

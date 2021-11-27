@@ -23,7 +23,7 @@ export class UsersListComponent implements OnInit {
 
   ngOnInit(): void {
     this._usersService
-      .getAll()
+      .get()
       .pipe(first())
       .subscribe((n) => {
         console.log(n);
