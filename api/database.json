@@ -2,14 +2,14 @@
   "users": [
     {
       "id": 1,
-      "avatar": "http://dummyimage.com/249x100.png/ff4444/ffffff",
+      "avatar": "https://picsum.photos/249/100",
       "name": "Brigg Anchor",
       "email": "banchor0@howstuffworks.com",
       "learnings": []
     },
     {
       "id": 2,
-      "avatar": "http://dummyimage.com/136x100.png/dddddd/000000",
+      "avatar": "https://picsum.photos/136/100",
       "name": "Lazar Inworth",
       "email": "linworth1@gmpg.org",
       "learnings": []
@@ -19,34 +19,64 @@
       "avatar": null,
       "name": "Alonzo Brahams",
       "email": "abrahams2@nih.gov",
-      "learnings": [2]
+      "learnings": [
+        2
+      ]
     },
     {
       "id": 4,
       "avatar": null,
       "name": "Lorry Tearny",
       "email": "ltearny3@hp.com",
-      "learnings": [2, 3]
+      "learnings": [
+        2,
+        3
+      ]
     },
     {
       "id": 5,
-      "avatar": "http://dummyimage.com/104x100.png/ff4444/ffffff",
+      "avatar": "https://picsum.photos/104/100",
       "name": "Kalinda Witherden",
       "email": "kwitherden4@ucoz.com",
       "learnings": []
     },
     {
       "id": 6,
-      "avatar": "http://dummyimage.com/162x100.png/5fa2dd/ffffff",
+      "avatar": "https://picsum.photos/162/100",
       "name": "Ollie Musslewhite",
       "email": "omusslewhite5@clickbank.net",
       "learnings": []
     }
   ],
   "learnings": [
-    { "id": 1, "name": "Latlux", "is_active": true, "users": [] },
-    { "id": 2, "name": "Quo Lux", "is_active": true, "users": [3, 4] },
-    { "id": 3, "name": "Holdlamis", "is_active": true, "users": [4] },
-    { "id": 4, "name": "Bamity", "is_active": false, "users": [] }
+    {
+      "id": 1,
+      "name": "Latlux",
+      "is_active": true,
+      "users": []
+    },
+    {
+      "id": 2,
+      "name": "Quo Lux",
+      "is_active": true,
+      "users": [
+        3,
+        4
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Holdlamis",
+      "is_active": true,
+      "users": [
+        4
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Bamity",
+      "is_active": false,
+      "users": []
+    }
   ]
 }
