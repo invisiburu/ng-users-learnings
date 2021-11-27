@@ -14,6 +14,7 @@
     font-weight: bold;
   }
 
+  &__item-head-cell,
   &__item-cell {
     &:last-of-type {
       justify-self: end;

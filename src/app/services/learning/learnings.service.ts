@@ -13,7 +13,7 @@ export class LearningsService {
     private _learningsStore: LearningsStore
   ) {}
 
-  get(opts?: { page?: number; limit?: number; isDry?: boolean }) {
+  get(opts?: { page?: number; limit?: number }) {
     const page = opts?.page || this._learningsStore.getValue().page || 1;
     const limit = opts?.limit || this._learningsStore.getValue().perPage || 10;
     return this._http
@@ -28,14 +28,12 @@ export class LearningsService {
         tap((response) => {
           const learnings = response.body;
           const total = Number(response.headers.get('X-Total-Count'));
-          if (!opts?.isDry) {
-            this._learningsStore.update({
-              learnings,
-              page,
-              perPage: limit,
-              total,
-            });
-          }
+          this._learningsStore.update({
+            learnings,
+            page,
+            perPage: limit,
+            total,
+          });
         })
       );
   }
@@ -44,5 +42,17 @@ export class LearningsService {
     const ids = typeof id === 'number' ? [id] : id;
     const idsConcat = `?${ids.map((el) => `id=${el}`).join('&')}`;
     return this._http.get<LearningEntry[]>(`/learnings${idsConcat}`);
+  }
+
+  create(learning: Omit<LearningEntry, 'id'>) {
+    return this._http.post<LearningEntry>('/learnings', learning);
+  }
+
+  patch(learningId: number, learningBody: Partial<Omit<LearningEntry, 'id'>>) {
+    return this._http.patch(`/learnings/${learningId}`, learningBody);
+  }
+
+  delete(learningId: number) {
+    return this._http.delete(`/learnings/${learningId}`);
   }
 }

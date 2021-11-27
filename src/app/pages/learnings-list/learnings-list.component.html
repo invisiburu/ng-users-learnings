@@ -1,1 +1,60 @@
-<p>learnings-list works!</p>
+<app-page-head class="learnings-list__page-head">
+  <ng-container heading>Learnings</ng-container>
+  <button action type="button" (click)="onCreateClick()">Create</button>
+</app-page-head>
+
+<div class="learnings-list__items">
+  <div class="learnings-list__item">
+    <div class="learnings-list__item-head-cell">Name</div>
+    <div class="learnings-list__item-head-cell">Active</div>
+    <div class="learnings-list__item-head-cell">Actions</div>
+  </div>
+  <div
+    class="learnings-list__item mt-4"
+    *ngFor="let learning of learnings$ | async; trackBy: learningTrackBy"
+  >
+    <div class="learnings-list__item-cell">
+      <span class="learnings-list__item-cell-txt">
+        {{ learning.name }}
+      </span>
+    </div>
+    <div class="learnings-list__item-cell">
+      <span class="learnings-list__item-cell-txt">
+        {{ learning.is_active }}
+      </span>
+    </div>
+    <div class="learnings-list__item-actions">
+      <button
+        class="learnings-list__item-action"
+        type="button"
+        (click)="onDeleteClick(learning)"
+      >
+        Delete
+      </button>
+      <button
+        class="learnings-list__item-action"
+        type="button"
+        (click)="onSwitchActiveClick(learning)"
+      >
+        <ng-container *ngIf="learning.is_active; else elseBlock">
+          Archive
+        </ng-container>
+        <ng-template #elseBlock> Unarchive </ng-template>
+      </button>
+      <button
+        class="learnings-list__item-action"
+        type="button"
+        (click)="onAssignClick(learning)"
+      >
+        Assign
+      </button>
+    </div>
+  </div>
+  <ngb-pagination
+    class="d-flex justify-content-center mt-4"
+    [page]="learningsPage$ | async"
+    (pageChange)="getPage($event)"
+    [pageSize]="learningsPerPage$ | async"
+    [collectionSize]="learningsTotal$ | async"
+  ></ngb-pagination>
+</div>
