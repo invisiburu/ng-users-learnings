@@ -16,7 +16,8 @@ import { PageHeadComponent } from '@/components/page-head/page-head.component';
 import { ApiInterceptor } from '@/interceptors/api.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateUserModal } from '@/modals/create-user/create-user.modal';
-import { ConfirmModal } from './modals/confirm/confirm.modal';
+import { ConfirmModal } from '@/modals/confirm/confirm.modal';
+import { UserLearningsModal } from '@/modals/user-learnings/user-learnings.modal';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ConfirmModal } from './modals/confirm/confirm.modal';
     PageHeadComponent,
     CreateUserModal,
     ConfirmModal,
+    UserLearningsModal,
   ],
   imports: [
     BrowserModule,

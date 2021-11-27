@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UsersStore } from '@/services/users/users.store';
-import { exhaustMap, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { UserEntry } from './users.types';
 

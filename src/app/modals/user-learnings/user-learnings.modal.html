@@ -1,0 +1,18 @@
+<h3>Learnings of {{user.name}}</h3>
+
+<div class="user-learnings__items">
+  <div class="user-learnings__head">
+    <span class="user-learnings__head-cell">ID</span>
+    <span class="user-learnings__head-cell">Name</span>
+    <span class="user-learnings__head-cell">Active</span>
+  </div>
+  <div class="user-learnings__item mt-2" *ngFor="let item of learnings$ | async">
+    <span class="user-learnings__item-cell">{{ item.id }}</span>
+    <span class="user-learnings__item-cell">{{ item.name }}</span>
+    <span class="user-learnings__item-cell">{{ item.is_active }}</span>
+  </div>
+</div>
+
+<button class="btn btn-primary mt-4" type="button" (click)="onCloseClick()">
+  Close
+</button>

@@ -7,6 +7,7 @@ import { UsersService } from '@/services/users/users.service';
 import { UserEntry } from '@/services/users/users.types';
 import { CreateUserModal } from '@/modals/create-user/create-user.modal';
 import { ConfirmModal } from '@/modals/confirm/confirm.modal';
+import { UserLearningsModal } from '@/modals/user-learnings/user-learnings.modal';
 
 @Component({
   selector: 'app-users-list',
@@ -61,6 +62,8 @@ export class UsersListComponent implements OnInit {
   }
 
   onLearningsClick(user: UserEntry) {
-    alert(`TODO: LEARNINGS!!! ${user.name}`);
+    const modal = this._modalService.open(UserLearningsModal);
+    const instance = modal.componentInstance as UserLearningsModal;
+    instance.user = user
   }
 }

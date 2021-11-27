@@ -1,0 +1,17 @@
+:host {
+  padding: 1rem 2rem;
+}
+
+.user-learnings__head,
+.user-learnings__item {
+  display: grid;
+  grid: auto / auto-flow 1fr;
+  align-items: center;
+}
+
+.user-learnings__head-cell,
+.user-learnings__item-cell {
+  &:last-of-type {
+    justify-self: end;
+  }
+}
