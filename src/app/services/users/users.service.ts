@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UsersStore } from '@/services/users/users.store';
-import { tap } from 'rxjs/operators';
+import { exhaustMap, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { UserEntry } from './users.types';
 
@@ -11,8 +11,8 @@ export class UsersService {
   constructor(private _http: HttpClient, private _usersStore: UsersStore) {}
 
   get(opts?: { page?: number; limit?: number }) {
-    const page = opts?.page || 1;
-    const limit = opts?.limit || 10;
+    const page = opts?.page || this._usersStore.getValue().page || 1;
+    const limit = opts?.limit || this._usersStore.getValue().perPage || 10;
     return this._http
       .get<UserEntry[]>('/users', {
         params: {
@@ -28,5 +28,9 @@ export class UsersService {
           this._usersStore.update({ users, page, perPage: limit, total });
         })
       );
+  }
+
+  create(user: Omit<UserEntry, 'id'>) {
+    return this._http.post<UserEntry>('/users', user);
   }
 }

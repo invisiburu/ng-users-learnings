@@ -1,9 +1,11 @@
+import { Observable } from 'rxjs';
+import { first } from 'rxjs/operators';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UsersQuery } from '@/services/users/users.query';
 import { UsersService } from '@/services/users/users.service';
 import { UserEntry } from '@/services/users/users.types';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { first } from 'rxjs/operators';
+import { CreateUserModal } from '@/modals/create-user/create-user.modal';
 
 @Component({
   selector: 'app-users-list',
@@ -19,7 +21,8 @@ export class UsersListComponent implements OnInit {
 
   constructor(
     private _usersService: UsersService,
-    private _usersQuery: UsersQuery
+    private _usersQuery: UsersQuery,
+    private _modalService: NgbModal
   ) {
     this.users$ = this._usersQuery.users$;
     this.usersPage$ = this._usersQuery.usersPage$;
@@ -36,7 +39,7 @@ export class UsersListComponent implements OnInit {
   }
 
   onCreateClick() {
-    alert('TODO: CREATEA!!!');
+    this._modalService.open(CreateUserModal);
   }
 
   onDeleteClick(user: UserEntry) {

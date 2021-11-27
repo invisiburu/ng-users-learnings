@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { NG_ENTITY_SERVICE_CONFIG } from '@datorama/akita-ng-entity-service';
@@ -14,6 +15,7 @@ import { AvatarComponent } from '@/components/avatar/avatar.component';
 import { PageHeadComponent } from '@/components/page-head/page-head.component';
 import { ApiInterceptor } from '@/interceptors/api.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CreateUserModal } from '@/modals/create-user/create-user.modal';
 
 @NgModule({
   declarations: [
@@ -23,13 +25,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NavigationComponent,
     AvatarComponent,
     PageHeadComponent,
+    CreateUserModal,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    environment.production ? [] : AkitaNgDevtools.forRoot(),
     NgbModule,
+    environment.production ? [] : AkitaNgDevtools.forRoot(),
   ],
   providers: [
     {

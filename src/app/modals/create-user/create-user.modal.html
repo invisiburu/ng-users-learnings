@@ -1,0 +1,36 @@
+<form class="container" [formGroup]="form" (submit)="onSubmit()">
+  <label class="form-group row">
+    <p class="col-form-label">Avatar URL:</p>
+    <input class="form-control" type="text" formControlName="avatar" />
+  </label>
+
+  <label class="form-group row">
+    <p class="col-form-label">Name:</p>
+    <input class="form-control" type="text" formControlName="name" />
+    <ng-container *ngIf="form.get('name').touched">
+      <p *ngIf="form.get('name').errors?.required" class="text-danger">
+        Name is required.
+      </p>
+    </ng-container>
+  </label>
+
+  <label class="form-group row">
+    <p class="col-form-label">Email:</p>
+    <input class="form-control" type="email" formControlName="email" />
+    <ng-container *ngIf="form.get('email').touched">
+      <p *ngIf="form.get('email').errors?.required" class="text-danger">
+        Email is required.
+      </p>
+      <p *ngIf="form.get('email').errors?.email" class="text-danger">
+        Email is invalid.
+      </p>
+    </ng-container>
+  </label>
+
+  <label class="form-group row">
+    <button class="btn btn-primary" type="submit">Save</button>
+    <button class="btn btn-outline ml-2" type="button" (click)="onCloseClick()">
+      Cancel
+    </button>
+  </label>
+</form>

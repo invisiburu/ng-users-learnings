@@ -5,7 +5,8 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
@@ -16,6 +17,11 @@ export class ApiInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     const apiReq = request.clone({ url: `${this._baseUrl}${request.url}` });
-    return next.handle(apiReq);
+    return next.handle(apiReq).pipe(
+      catchError((response) => {
+        alert(`Unexpected ${response.status} error occurred!`)
+        return throwError(response);
+      })
+    );
   }
 }
