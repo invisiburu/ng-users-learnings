@@ -1,3 +1,5 @@
+<h3>Create user</h3>
+
 <form class="container" [formGroup]="form" (submit)="onSubmit()">
   <label class="form-group row">
     <p class="col-form-label">Avatar URL:</p>
@@ -27,7 +29,7 @@
     </ng-container>
   </label>
 
-  <label class="form-group row">
+  <label class="form-group row mt-4">
     <button class="btn btn-primary" type="submit">Save</button>
     <button class="btn btn-outline ml-2" type="button" (click)="onCloseClick()">
       Cancel
