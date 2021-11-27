@@ -1,0 +1,9 @@
+.nav {
+  &__btn {
+    color: inherit;
+
+    &_active {
+      font-weight: bold;
+    }
+  }
+}
