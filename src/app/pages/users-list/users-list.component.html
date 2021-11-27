@@ -4,7 +4,7 @@
 </app-page-head>
 
 <div class="users-list__items">
-  <div class="users-list__item" *ngFor="let user of users$ | async">
+  <div class="users-list__item" *ngFor="let user of users$ | async; trackBy: userTrackBy">
     <div class="users-list__item-cell">
       <app-avatar class="users-list__item-ava" [source]="user"></app-avatar>
       <span class="users-list__item-cell-txt">

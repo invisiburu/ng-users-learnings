@@ -35,6 +35,10 @@ export class UsersListComponent implements OnInit {
     this.getPage();
   }
 
+  userTrackBy(idx: number, item: UserEntry) {
+    return item.id;
+  }
+
   getPage(page = 1) {
     return this._usersService.get({ page }).pipe(first()).subscribe();
   }
