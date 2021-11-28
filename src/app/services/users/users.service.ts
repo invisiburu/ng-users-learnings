@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UsersStore } from '@/services/users/users.store';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { UserEntry } from './users.types';
 
@@ -26,12 +26,9 @@ export class UsersService {
           const users = response.body;
           const total = Number(response.headers.get('X-Total-Count'));
           this._usersStore.update({ users, page, perPage: limit, total });
-        })
+        }),
+        map((response) => response.body)
       );
-  }
-
-  update(userId: number, userBody: Partial<Omit<UserEntry, 'id'>>) {
-    return this._http.patch(`/users/${userId}`, userBody);
   }
 
   getAll() {
@@ -40,6 +37,10 @@ export class UsersService {
 
   create(user: Omit<UserEntry, 'id'>) {
     return this._http.post<UserEntry>('/users', user);
+  }
+
+  update(userId: number, userBody: Partial<Omit<UserEntry, 'id'>>) {
+    return this._http.patch(`/users/${userId}`, userBody);
   }
 
   delete(userId: number) {
