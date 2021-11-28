@@ -1,9 +1,9 @@
 import { UserEntry } from '@/services/users/users.types';
 
-export const mockUserEntry = (): UserEntry => ({
-  id: 1,
-  name: 'John Doe',
+export const mockUserEntry = (id = 1): UserEntry => ({
+  id,
+  name: `John Doe #${id}`,
   avatar: '',
-  email: 'test@mail.com',
+  email: `test${id}@mail.com`,
   learnings: [],
 });

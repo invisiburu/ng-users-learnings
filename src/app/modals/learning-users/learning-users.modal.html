@@ -8,7 +8,7 @@
     <div ngbDropdownMenu aria-labelledby="assignUsers">
       <div *ngIf="users$|async as users" formArrayName="users" class="px-2">
         <label
-          class="form-check"
+          class="learning-users__user-control form-check"
           *ngFor="let control of usersFormArray.controls; let idx=index"
         >
           <input
@@ -24,10 +24,18 @@
 </form>
 
 <div class="mt-4">
-  <button class="btn btn-primary" type="button" (click)="onSaveClick()">
+  <button
+    class="learning-users__assign-btn btn btn-primary"
+    type="button"
+    (click)="onSaveClick()"
+  >
     Assign
   </button>
-  <button class="btn btn-outline ml-2" type="button" (click)="onCloseClick()">
+  <button
+    class="learning-users__cancel-btn btn btn-outline ml-2"
+    type="button"
+    (click)="onCloseClick()"
+  >
     Cancel
   </button>
 </div>
