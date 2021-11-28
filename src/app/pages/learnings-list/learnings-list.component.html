@@ -1,6 +1,13 @@
 <app-page-head class="learnings-list__page-head">
   <ng-container heading>Learnings</ng-container>
-  <button action type="button" (click)="onCreateClick()">Create</button>
+  <button
+    class="btn btn-success"
+    action
+    type="button"
+    (click)="onCreateClick()"
+  >
+    Create
+  </button>
 </app-page-head>
 
 <div class="learnings-list__items">
@@ -10,7 +17,7 @@
     <div class="learnings-list__item-head-cell">Actions</div>
   </div>
   <div
-    class="learnings-list__item mt-4"
+    class="learnings-list__item mt-3"
     *ngFor="let learning of learnings$ | async; trackBy: learningTrackBy"
   >
     <div class="learnings-list__item-cell">
@@ -25,14 +32,15 @@
     </div>
     <div class="learnings-list__item-actions">
       <button
-        class="learnings-list__item-action"
+        class="learnings-list__item-action btn btn-danger"
         type="button"
         (click)="onDeleteClick(learning)"
       >
         Delete
       </button>
       <button
-        class="learnings-list__item-action"
+        class="learnings-list__item-action btn"
+        [ngClass]="learning.is_active ? 'btn-warning' : 'btn-success'"
         type="button"
         (click)="onSwitchActiveClick(learning)"
       >
@@ -42,7 +50,7 @@
         <ng-template #elseBlock> Unarchive </ng-template>
       </button>
       <button
-        class="learnings-list__item-action"
+        class="learnings-list__item-action btn btn-info"
         type="button"
         (click)="onAssignClick(learning)"
       >

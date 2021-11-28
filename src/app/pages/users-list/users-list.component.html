@@ -1,6 +1,13 @@
 <app-page-head class="users-list__page-head">
   <ng-container heading>Users</ng-container>
-  <button action type="button" (click)="onCreateClick()">Create</button>
+  <button
+    class="btn btn-success"
+    action
+    type="button"
+    (click)="onCreateClick()"
+  >
+    Create
+  </button>
 </app-page-head>
 
 <div class="users-list__items">
@@ -10,7 +17,7 @@
     <div class="users-list__item-head-cell">Actions</div>
   </div>
   <div
-    class="users-list__item mt-4"
+    class="users-list__item mt-3"
     *ngFor="let user of users$ | async; trackBy: userTrackBy"
   >
     <div class="users-list__item-cell">
@@ -26,14 +33,14 @@
     </div>
     <div class="users-list__item-actions">
       <button
-        class="users-list__item-action"
+        class="users-list__item-action btn btn-danger"
         type="button"
         (click)="onDeleteClick(user)"
       >
         Delete
       </button>
       <button
-        class="users-list__item-action"
+        class="users-list__item-action btn btn-info"
         *ngIf="user.learnings.length > 0"
         type="button"
         (click)="onLearningsClick(user)"
