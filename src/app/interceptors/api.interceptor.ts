@@ -19,7 +19,14 @@ export class ApiInterceptor implements HttpInterceptor {
     const apiReq = request.clone({ url: `${this._baseUrl}${request.url}` });
     return next.handle(apiReq).pipe(
       catchError((response) => {
-        alert(`Unexpected ${response.status} error occurred!`)
+        if (response.status !== 0) {
+          // NOTE: the json-server sometimes return 0 as an error but
+          // the changes applied successfully. I guess this happens because
+          // it tries write the json file before it was closed from the
+          // previous request or something like that. So I just ignore reporting
+          // this errors
+          alert(`Unexpected ${response.status} error occurred!`)
+        }
         return throwError(response);
       })
     );
