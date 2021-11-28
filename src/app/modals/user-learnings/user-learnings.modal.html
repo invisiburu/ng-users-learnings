@@ -3,14 +3,14 @@
 <div class="user-learnings__items">
   <div class="user-learnings__item">
     <span class="user-learnings__item-head-cell">Name</span>
-    <span class="user-learnings__item-head-cell">Active</span>
+    <span class="user-learnings__item-head-cell">Archived</span>
   </div>
   <div
     class="user-learnings__item mt-2"
     *ngFor="let item of learnings$ | async"
   >
     <span class="user-learnings__item-cell">{{ item.name }}</span>
-    <span class="user-learnings__item-cell">{{ item.is_active }}</span>
+    <span class="user-learnings__item-cell">{{ !item.is_active }}</span>
   </div>
 </div>
 
