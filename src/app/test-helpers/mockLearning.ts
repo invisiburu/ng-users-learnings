@@ -1,8 +1,8 @@
 import { LearningEntry } from '@/services/learning/learnings.types';
 
-export const mockLearningEntry = (id = 1): LearningEntry => ({
+export const mockLearningEntry = (id = 1, isActive = true): LearningEntry => ({
   id,
-  name: 'John Doe',
-  is_active: true,
+  name: `Learning #${id}`,
+  is_active: isActive,
   users: [],
 });
