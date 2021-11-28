@@ -7,6 +7,7 @@ import { LearningsService } from '@/services/learning/learnings.service';
 import { LearningEntry } from '@/services/learning/learnings.types';
 import { CreateLearningModal } from '@/modals/create-learning/create-learning.modal';
 import { ConfirmModal } from '@/modals/confirm/confirm.modal';
+import { LearningUsersModal } from '@/modals/learning-users/learning-users.modal';
 
 @Component({
   selector: 'app-learnings-list',
@@ -49,7 +50,7 @@ export class LearningsListComponent implements OnInit {
 
   onSwitchActiveClick(learning: LearningEntry) {
     this._learningsService
-      .patch(learning.id, { is_active: !learning.is_active })
+      .update(learning.id, { is_active: !learning.is_active })
       .pipe(
         first(),
         mergeMap(() => this._learningsService.get())
@@ -72,9 +73,8 @@ export class LearningsListComponent implements OnInit {
   }
 
   onAssignClick(learning: LearningEntry) {
-    alert('TODO: assign');
-    // const modal = this._modalService.open(UserLearningsModal);
-    // const instance = modal.componentInstance as UserLearningsModal;
-    // instance.user = user;
+    const modal = this._modalService.open(LearningUsersModal);
+    const instance = modal.componentInstance as LearningUsersModal;
+    instance.learning = learning;
   }
 }

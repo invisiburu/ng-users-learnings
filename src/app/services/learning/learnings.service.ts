@@ -48,7 +48,7 @@ export class LearningsService {
     return this._http.post<LearningEntry>('/learnings', learning);
   }
 
-  patch(learningId: number, learningBody: Partial<Omit<LearningEntry, 'id'>>) {
+  update(learningId: number, learningBody: Partial<Omit<LearningEntry, 'id'>>) {
     return this._http.patch(`/learnings/${learningId}`, learningBody);
   }
 

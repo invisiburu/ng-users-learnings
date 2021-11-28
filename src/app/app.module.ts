@@ -19,6 +19,7 @@ import { CreateUserModal } from '@/modals/create-user/create-user.modal';
 import { ConfirmModal } from '@/modals/confirm/confirm.modal';
 import { UserLearningsModal } from '@/modals/user-learnings/user-learnings.modal';
 import { CreateLearningModal } from '@/modals/create-learning/create-learning.modal';
+import { LearningUsersModal } from '@/modals/learning-users/learning-users.modal';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { CreateLearningModal } from '@/modals/create-learning/create-learning.mo
     ConfirmModal,
     UserLearningsModal,
     CreateLearningModal,
+    LearningUsersModal,
   ],
   imports: [
     BrowserModule,

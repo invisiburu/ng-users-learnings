@@ -30,6 +30,14 @@ export class UsersService {
       );
   }
 
+  update(userId: number, userBody: Partial<Omit<UserEntry, 'id'>>) {
+    return this._http.patch(`/users/${userId}`, userBody);
+  }
+
+  getAll() {
+    return this._http.get<UserEntry[]>('/users');
+  }
+
   create(user: Omit<UserEntry, 'id'>) {
     return this._http.post<UserEntry>('/users', user);
   }
