@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { LearningsStore } from './learnings.store';
 import { LearningEntry } from './learnings.types';
 
@@ -34,7 +34,8 @@ export class LearningsService {
             perPage: limit,
             total,
           });
-        })
+        }),
+        map((response) => response.body)
       );
   }
 
